@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './_top-nav.scss';
 import { useSelector } from 'react-redux';
 
@@ -27,21 +28,23 @@ const TopNav = ()=>{
                     <i className='fa fa-user-circle user-icon'/>
                     <h5> <a href='#'> Login</a></h5> / <h5><a href='#'>Register</a></h5>
                 </div>
-                <div className='cart-wishlist'>
-                <ul className='p-0'>
-                    <li className='list-icon'> <i className='fa fa-heart'/></li>
-                    <li className='list-icon'>
-                        <i className='fa fa-shopping-cart'/>
-                        {
-                            cartItemCount!==0 ?
-                                <div id='cart-item-count'>
-                                    <p> {cartItemCount} </p>
-                                </div>
-                            : <></>
-                        }
-                    </li>
-                    </ul>
-                </div>
+                    <div className='cart-wishlist'>
+                        <Link to="/cart">
+                            <ul className='p-0'>
+                                <li className='list-icon'> <i className='fa fa-heart'/></li>
+                                <li className='list-icon'>
+                                    <i className='fa fa-shopping-cart'/>
+                                    {
+                                        cartItemCount!==0 ?
+                                            <div id='cart-item-count'>
+                                                <p> {cartItemCount} </p>
+                                            </div>
+                                        : <></>
+                                    }
+                                </li>
+                            </ul>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

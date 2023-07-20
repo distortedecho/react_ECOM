@@ -11,7 +11,14 @@ const initialState = {
 const productSlice = createSlice({
     name:"products",
     initialState,
-    reducers:{},
+    reducers:{
+        filterProducts : (state,action)=>{
+            const filterData = action.payload.products.filter((elem)=>{
+                return elem.category_id===action.payload.selectedCategory.parent_category_id;
+            })
+            state.products = filterData;
+        }
+    },
     extraReducers : {
         [getProducts.pending] : (state,action)=>{
             state.status = "Loading...";
@@ -27,4 +34,5 @@ const productSlice = createSlice({
     }
 })
 
+export const {filterProducts} = productSlice.actions;
 export default productSlice.reducer;

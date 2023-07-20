@@ -1,17 +1,30 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import accordionSlice from '../../Redux/Accordion';
 import { getCategories } from '../../Redux/Category/action';
 import './_side-nav.scss';
+import { filterProducts } from '../../Redux/Product';
 
 const SideNav = ()=>{
 
     const accordionData = useSelector(state=>state.categoryReducer.categories);
+    const fetchedProductData = useSelector(state=>state.pr);
+    const [products, setProducts] = useState();
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(getCategories());
     },[]);
+    useEffect(()=>{
+        setProducts(fetchedProductData.products);
+    },[fetchedProductData.status]);
+
+    const filterData= (selectedCategory)=>{
+        console.log(products);
+        console.log(selectedCategory);
+        const payload = {selectedCategory, products};
+        dispatch(filterProducts(payload));
+    }
 
     return(
         <div className='side-nav'>
@@ -38,7 +51,11 @@ const SideNav = ()=>{
                                                 {
                                                     accordionData.map((subCategory)=>{
                                                         if(accordionCategory.id === subCategory.parent_category_id){
-                                                            return <li className='sub-items'> <a href='#'>{subCategory.category}</a> </li>
+                                                            return(
+                                                                <li className='sub-items'> 
+                                                                <a href='#' onClick={()=>filterData(subCategory)}>{subCategory.category}</a> 
+                                                                </li>
+                                                            )                                         
                                                         }
                                                     })
                                                 }
