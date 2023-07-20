@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/react_ECOM/static/css/main.89b834e5.css",
+    "main.js": "/react_ECOM/static/js/main.6618e505.js",
+    "static/js/787.bff5df39.chunk.js": "/react_ECOM/static/js/787.bff5df39.chunk.js",
+    "static/media/shop-8.jpg": "/react_ECOM/static/media/shop-8.b1170ef36490ff7b218c.jpg",
+    "static/media/shop-5.jpg": "/react_ECOM/static/media/shop-5.068d1a7fdadd319bb01e.jpg",
+    "static/media/shop-3.jpg": "/react_ECOM/static/media/shop-3.a19fdf17a0f0ce394b78.jpg",
+    "static/media/shop-1.jpg": "/react_ECOM/static/media/shop-1.1952dad9e7fa13a9f020.jpg",
+    "static/media/shop-6.jpg": "/react_ECOM/static/media/shop-6.92fa4ef916e1127e3deb.jpg",
+    "static/media/shop-4.jpg": "/react_ECOM/static/media/shop-4.057ad0e9dc5a6b7cd915.jpg",
+    "static/media/shop-2.jpg": "/react_ECOM/static/media/shop-2.88804ca50e59a975ebb1.jpg",
+    "static/media/shop-9.jpg": "/react_ECOM/static/media/shop-9.e67cf6f17809c6b4764a.jpg",
+    "static/media/shop-7.jpg": "/react_ECOM/static/media/shop-7.acdb8aaff8decab7cdd7.jpg",
+    "static/media/logo.svg": "/react_ECOM/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/react_ECOM/index.html",
+    "main.89b834e5.css.map": "/react_ECOM/static/css/main.89b834e5.css.map",
+    "main.6618e505.js.map": "/react_ECOM/static/js/main.6618e505.js.map",
+    "787.bff5df39.chunk.js.map": "/react_ECOM/static/js/787.bff5df39.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89b834e5.css",
+    "static/js/main.6618e505.js"
+  ]
+}
