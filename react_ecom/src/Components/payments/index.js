@@ -3,7 +3,7 @@ import axios from "axios";
 const PayButton = ({cartItems})=>{
     const handleCheckout = () =>{
         console.log(cartItems);
-       axios.post("http://localhost:8080/stripe/create-checkout-session",{    
+       axios.post("https://jade-outrageous-seal.cyclic.app/stripe/create-checkout-session",{    
           cartItems,
           userId: 1
        })
