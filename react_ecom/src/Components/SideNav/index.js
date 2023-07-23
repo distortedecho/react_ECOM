@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import accordionSlice from '../../Redux/Accordion';
 import { getCategories } from '../../Redux/Category/action';
 import './_side-nav.scss';
-import { filterProducts } from '../../Redux/Product';
+import { filterByPrice, filterProducts } from '../../Redux/Product';
 
 const SideNav = ()=>{
 
     const accordionData = useSelector(state=>state.categoryReducer.categories);
     const fetchedProductData = useSelector(state=>state.pr);
     const [products, setProducts] = useState();
+    const [minPriceLimit,setMinPriceLimit] = useState(10);
+    const [maxPriceLimit,setMaxPriceLimit] = useState(130);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -20,10 +22,21 @@ const SideNav = ()=>{
     },[fetchedProductData.status]);
 
     const filterData= (selectedCategory)=>{
-        console.log(products);
-        console.log(selectedCategory);
         const payload = {selectedCategory, products};
         dispatch(filterProducts(payload));
+    }
+
+    const setPriceLimit = (e, stateFlag)=>{
+        if(stateFlag ==="max"){
+            setMaxPriceLimit(e.target.value);
+        }else if(stateFlag==="min"){
+            setMinPriceLimit(e.target.value);
+        }
+    }
+
+    const applyPriceFilter = () =>{
+        const payload = {products,minPriceLimit, maxPriceLimit};
+        dispatch(filterByPrice(payload));
     }
 
     return(
@@ -68,6 +81,36 @@ const SideNav = ()=>{
                         }
                     })
                 }
+            </div>
+
+            
+            <div className='price-filter-container'>
+                <div className='section-title'>
+                    <h3> Filter By Price </h3>
+                </div>
+                <div>
+                    <label> Min : {minPriceLimit} </label>
+                    <input 
+                        className='form-range'
+                        type="range"
+                        min={10}
+                        max={130}
+                        step={10}
+                        onChange={(e)=>setPriceLimit(e,"min")}
+                    />
+                </div>
+                <div>
+                    <label> Max : {maxPriceLimit} </label>
+                    <input
+                        className='form-range'
+                        type="range"
+                        min={10}
+                        max={130}
+                        step={10}
+                        onChange={(e)=>setPriceLimit(e,"max")}
+                    />
+                </div>
+                <button className='btn btn-outline-dark my-3' onClick={applyPriceFilter}> Apply Filter </button>
             </div>
 
         </div>

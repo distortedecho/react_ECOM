@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import LandingPage from './Components';
 import ProductDetails from './Components/ProductDetails';
 import Cart from './Components/Cart';
+import CheckOutSuccess from './Components/CheckOut/CheckOutSuccess';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' Component={LandingPage}/>
         <Route path='/productDetails' Component={ProductDetails}/>
         <Route path='/cart' Component={Cart}/>
+        <Route path='/checkout-success' Component={CheckOutSuccess}/>
       </Routes>
     </div>
   );

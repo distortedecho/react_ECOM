@@ -29,7 +29,7 @@ const Products = ()=>{
                              <Link 
                                 to="/productDetails"
                                 state={product}
-                                >{product.product_name}
+                                >
                                 <div className='product-image-container'>
                                     <img src={require('../../assets/images/shop/'+product.product_img)}/>
                                 </div>

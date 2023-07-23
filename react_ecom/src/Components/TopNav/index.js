@@ -1,10 +1,24 @@
 import { Link } from 'react-router-dom';
 import './_top-nav.scss';
 import { useSelector } from 'react-redux';
+import GoogleLogin from 'react-google-login';
+import { useState } from 'react';
+import { gapi } from 'gapi-script';
 
 const TopNav = ()=>{
 
     const cartItemCount = useSelector(state=>state.cr.totalItems);
+    const [userDetails, setUserDetails] = useState("");
+
+    const successHandler = (res) => {
+        // Handle the successful login, e.g., set user state or perform other actions
+        setUserDetails(res.profileObj)
+      };
+    
+      const failureHandler = (error) => {
+        // Handle login failure
+        console.log('Login failed:', error);
+      };
 
     return(
         <div>
@@ -26,7 +40,21 @@ const TopNav = ()=>{
                 </div>
                 <div className='login-container p-0'>
                     <i className='fa fa-user-circle user-icon'/>
-                    <h5> <a href='#'> Login</a></h5> / <h5><a href='#'>Register</a></h5>
+                    <h5> 
+                        {
+                            userDetails==="" ?
+                            <GoogleLogin
+                                clientId='62155724394-ojdnufrchf5oopks3j23pl8t4rlvdej8.apps.googleusercontent.com'
+                                cookiePolicy='single_host_origin'
+                                buttonText = 'Login'
+                                plugin_name = 'hello' 
+                                onSuccess={successHandler}
+                                onFailure={failureHandler}
+                            />
+                            :
+                            userDetails.name
+                        }
+                    </h5>
                 </div>
                     <div className='cart-wishlist'>
                         <Link to="/cart">

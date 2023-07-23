@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCartItem, updateItemQuantity } from "../../Redux/cart/cartSlice";
+import PayButton from "../payments";
 
 
 const FilledCart = ()=>{
@@ -79,9 +80,7 @@ const FilledCart = ()=>{
                         <span> Total : ${cart.totalItemsPrice} </span>
                         <hr/>
                     </div>
-                    <div className="btn btn-outline-dark w-100 mb-4 mt-1">
-                        Checkout
-                    </div>
+                        <PayButton cartItems={cart.cartItems}/>
                 </div>
 
             </div>
